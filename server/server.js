@@ -1,5 +1,7 @@
+import { config } from "dotenv";
 import express, { json, urlencoded } from "express";
 
+config();
 const app = express();
 
 app.use(json());
@@ -9,4 +11,5 @@ app.get("/restapi", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
-app.listen(3001, () => console.log("Server is up and running on port 3001"));
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log("Server is up and running on port " + port));
