@@ -8,7 +8,9 @@ function App() {
   useEffect(() => {
     fetch("/restapi")
       .then((response) => response.text())
-      .then((item) => setData(item))
+      .then((item) => {
+        setData(JSON.parse(item));
+      })
       .catch((err) => console.log(err));
   }, []);
 
